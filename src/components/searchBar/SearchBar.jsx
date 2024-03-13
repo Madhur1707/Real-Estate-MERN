@@ -34,7 +34,7 @@ const SearchBar = () => {
           name="minPrice"
           min={0}
           max={10000000}
-          placeholder="Min Price"
+          placeholder="Min Price" 
         />
         <input
           type="number"
