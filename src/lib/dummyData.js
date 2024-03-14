@@ -6,7 +6,7 @@ export const listData = [
       bedroom: 2,
       bathroom: 1,
       price: 1000,
-      address: "456 Park Avenue, London",
+      address: "Sector 63, Noida",
       latitude: 28.5355,
       longitude: 77.3910,
     },
@@ -115,6 +115,6 @@ export const listData = [
   
   export const userData = {
     id: 1,
-    name: "John Doe",
+    name: "Madhur Pathak",
     img: "https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
   };

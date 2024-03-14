@@ -5,6 +5,7 @@
   .listContainer {
     flex: 3;
     height: 100%;
+    overflow: hidden;
 
     .wrapper {
       height: 100%;
@@ -12,8 +13,12 @@
       display: flex;
       flex-direction: column;
       gap: 50px;
-      overflow-y: scroll;
+      overflow-y: auto;
       padding-bottom: 50px;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
   .mapContainer {
