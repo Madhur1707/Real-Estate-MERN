@@ -4,9 +4,6 @@ import Layout from "./pages/layout/layout";
 import ListPage from "./pages/listPage/listPage";
 import SoloPage from "./pages/soloPage/soloPage";
 
-
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,26 +11,22 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />
+        element: <HomePage />,
       },
       {
         path: "/list",
-        element: <ListPage />
+        element: <ListPage />,
       },
       {
         path: "/:id",
-        element: <SoloPage />
-      }
-    ]
+        element: <SoloPage />,
+      },
+    ],
   },
-
 ]);
 
 function App() {
-  return (
-
-    <RouterProvider router={router} />
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
