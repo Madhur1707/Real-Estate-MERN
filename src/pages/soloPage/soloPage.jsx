@@ -30,7 +30,7 @@ const SoloPage = () => {
       </div>
       <div className="features">
         <div className="wrapper">
-          <p className="title">Genral</p>
+          <p className="title">General</p>
           <div className="listVertical">
             <div className="feature">
               <img src="./utility.png" alt="" />
@@ -66,7 +66,7 @@ const SoloPage = () => {
             </div>
             <div className="size">
               <img src="./bath.png" alt="" />
-              <span>3 Bathrrom</span>
+              <span>3 Bathroom</span>
             </div>
           </div>
           <p className="title">Nearby Places</p>
