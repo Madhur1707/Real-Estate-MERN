@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const user = true;
+  const user = false;
   return (
     <nav>
       <div className="left">
@@ -13,7 +13,7 @@ function Navbar() {
           <img src="/logo.png" alt="" />
           <span>RealEstate</span>
         </a>
-        <a href="/list">Home</a>
+        <a href="/">Home</a>    
         <a href="/">About</a>
         <a href="/">Contact</a>
         <a href="/">Agents</a>
