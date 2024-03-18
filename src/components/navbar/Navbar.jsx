@@ -13,7 +13,7 @@ function Navbar() {
           <img src="/logo.png" alt="" />
           <span>RealEstate</span>
         </a>
-        <a href="/">Home</a>    
+        <a href="/list">Home</a>    
         <a href="/">About</a>
         <a href="/">Contact</a>
         <a href="/">Agents</a>
