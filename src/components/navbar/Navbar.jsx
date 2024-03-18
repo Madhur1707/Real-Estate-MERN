@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 function Navbar() {
   const [open, setOpen] = useState(false);
 
-  const user = false;
+  const user = true;
   return (
     <nav>
       <div className="left">
@@ -13,7 +13,10 @@ function Navbar() {
           <img src="/logo.png" alt="" />
           <span>RealEstate</span>
         </a>
-        <a href="/list">Home</a>    
+        <Link to="./list">
+          {" "}
+          <a href="/list">Home</a>{" "}
+        </Link>
         <a href="/">About</a>
         <a href="/">Contact</a>
         <a href="/">Agents</a>
@@ -50,7 +53,7 @@ function Navbar() {
           />
         </div>
         <div className={open ? "menu active" : "menu"}>
-          <a href="/list">Home</a>
+          <a href="/">Home</a>
           <a href="/">About</a>
           <a href="/">Contact</a>
           <a href="/">Agents</a>
