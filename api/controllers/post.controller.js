@@ -16,11 +16,20 @@ export const getPosts = async (req, res) => {
 // FUNCTION FOR GET SINGLE POST FROM THE DB...
 
 export const getPost = async (req, res) => {
-  const id = req.params;
+  const id = req.params.id;
 
   try {
     const post = await prisma.post.findUnique({
       where: { id },
+      include:{
+        postDetail:true,
+        user:{
+            select:{
+                username:true,
+                avatar:true,
+            }
+        }
+      }
     });
 
     res.status(200).json(post);
@@ -39,8 +48,11 @@ export const addPost = async (req, res) => {
   try {
     const newPost = await prisma.post.create({
       data: {
-        ...body,
+        ...body.postData,
         userId: tokenUserId,
+        postDetail: {
+          create: body.postDetail,
+        },
       },
     });
 
@@ -65,7 +77,6 @@ export const updatePost = async (req, res) => {
 // FUNCTION FOR DELETING A  POST BY USER AFTER VERIFYING THE TOKEN....
 
 export const deletePost = async (req, res) => {
-    
   const id = req.params.id;
   const tokenUserId = req.userId;
 
