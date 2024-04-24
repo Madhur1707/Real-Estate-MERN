@@ -32,6 +32,7 @@ const NewPostPage = () => {
           longitude: inputs.longitude,
           images: images,
         },
+
         postDetail: {
           desc: value,
           utilities: inputs.utilities,
