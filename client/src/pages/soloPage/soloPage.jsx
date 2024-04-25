@@ -1,6 +1,6 @@
 import Slider from "../../components/slider/Slider";
 import "./soloPage.scss";
-import { singlePostData, userData } from "../../lib/dummyData";
+import { userData } from "../../lib/dummyData";
 import Map from "../../components/map/Map";
 import { useLoaderData } from "react-router-dom";
 import DOMPurify from "dompurify";
@@ -123,7 +123,7 @@ const SoloPage = () => {
 
           <p className="title">Location</p>
           <div className="mapContainer">
-            <Map items={[singlePostData]} />
+            <Map items={[post]} />
           </div>
           <div className="buttons">
             <button>
