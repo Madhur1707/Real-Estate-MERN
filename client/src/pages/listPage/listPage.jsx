@@ -4,8 +4,9 @@ import Card from "../../components/card/Card";
 import Map from "../../components/map/Map";
 import { useLoaderData } from "react-router-dom";
 
+
 const ListPage = () => {
-  const posts = useLoaderData();
+const posts = useLoaderData()
   return (
     <div className="listPage">
       <div className="listContainer">

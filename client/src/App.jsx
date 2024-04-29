@@ -10,8 +10,6 @@ import UpdateProfile from "./pages/updateProfile/UpdateProfile";
 import NewPostPage from "./pages/newPostPage/newPostPage";
 import { listPageLoader, singlePageLoader } from "./lib/loaders";
 
-
-
 const router = createBrowserRouter([
   {
     path: "/",
@@ -56,7 +54,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/add",
-        element: <NewPostPage />
+        element: <NewPostPage />,
       },
     ],
   },
