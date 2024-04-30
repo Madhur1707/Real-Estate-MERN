@@ -13,12 +13,14 @@ export const getPosts = async (req, res) => {
         bedroom: parseInt(query.bedroom) || undefined,
         price: {
           gte: parseInt(query.minPrice) || 0,
-          lte: parseInt(query.maxPrice) || 10000000000,
+          lte: parseInt(query.maxPrice) || 100000000000,
         },
       },
     });
 
-    res.status(200).json(posts);
+    setTimeout(() => {
+      res.status(200).json(posts);
+    }, 3000);
   } catch (err) {
     console.log(err);
     res.status(500).json({ message: "Failed to get Posts!" });

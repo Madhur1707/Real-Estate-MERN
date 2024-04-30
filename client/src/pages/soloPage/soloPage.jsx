@@ -22,7 +22,10 @@ const SoloPage = () => {
                   <img src="./pin.png" alt="" />
                   <span>{post.address}</span>
                 </div>
-                <div className="price">$ {post.price}</div>
+                <div className="price">
+                  {" "}
+                  <span>&#8377;</span> {post.price}
+                </div>
               </div>
               <div className="user">
                 <img src={post.user.avatar} alt="" />

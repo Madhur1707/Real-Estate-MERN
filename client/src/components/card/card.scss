@@ -49,13 +49,18 @@
       align-items: center;
       gap: 5px;
       color: #888;
+      
+      img{
+        width: 20px;
+        height: 20px;
+      }
     }
     .price {
       font-size: 20px;
       font-weight: 300;
       padding: 5px;
       border-radius: 5px;
-      background-color: #cfca37;
+      background-color: #fece51;
       width: max-content;
     }
     .bottom {
