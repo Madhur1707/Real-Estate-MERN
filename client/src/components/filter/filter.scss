@@ -40,7 +40,12 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
-      background-color: #fece51;
+      background-color: #D3D4D7;
+
+      &:hover{
+        scale: 1.05;
+        background-color: #e0e0e0;
+      }
 
       img {
         width: 24px;

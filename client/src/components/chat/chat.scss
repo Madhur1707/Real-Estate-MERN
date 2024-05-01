@@ -48,7 +48,8 @@
     justify-content: space-between;
 
     .top {
-      background-color: #f7c14b85;
+      background-color: #143AA2;
+      color: #Ffffff;
       padding: 20px;
       font-weight: bold;
       display: flex;
@@ -69,6 +70,9 @@
     }
     .close{
         cursor: pointer;
+        &:hover{
+          scale: 1;
+        }
     }
     }
     .center {
@@ -93,7 +97,8 @@
 
             span{
                 font-size: 12px;
-                background-color: #f7c14b85;
+                background-color: #143AA2;
+                color: #fff;
                 padding: 2px;
                 border-radius: 5px;
             }
@@ -101,7 +106,7 @@
 
     }
     .bottom {
-        border-top: 2px solid #f7c14b85;
+        border-top: 2px solid #fff;
         height: 60px;
         display: flex;
         align-items: center;
@@ -117,11 +122,15 @@
 
         button{
             flex: 1;
-            background-color: #f7c14b85;
+            background-color: #143AA2;
+            color: #fff;
             height: 100%;
             border: none;
             cursor: pointer;
 
+            &:hover{
+              scale: 1.02;
+            }
         }
     }
   }

@@ -7,8 +7,6 @@ nav {
   align-items: center;
 
   a {
-    transition: all 0.4s ease;
-
     @include sm {
       display: none;
     }
@@ -24,6 +22,15 @@ nav {
     align-items: center;
     gap: 50px;
 
+    a {
+      color: #111;
+      font-size: 18px;
+
+      &:hover {
+        color: #3e8de3;
+      }
+    }
+
     .logo {
       font-weight: bold;
       font-size: 20px;
@@ -32,7 +39,8 @@ nav {
       align-items: center;
 
       img {
-        width: 28px;
+        width: 50px;
+        height: 50px;
       }
 
       span {
@@ -81,18 +89,23 @@ nav {
       }
 
       span {
-        @include sm{
+        @include sm {
           display: none;
         }
       }
 
       .profile {
         padding: 12px 24px;
-        background-color: #fece51;
+        background-color: #143aa2;
+        color: #ffffffff;
         border-radius: 5px;
         cursor: pointer;
         border: none;
         position: relative;
+
+        &:hover {
+          background-color: #143aa2;
+        }
 
         .notification {
           position: absolute;
@@ -120,7 +133,7 @@ nav {
 
       img {
         width: 36px;
-        height: 36px; 
+        height: 36px;
         cursor: pointer;
       }
 

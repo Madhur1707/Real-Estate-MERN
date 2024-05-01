@@ -41,9 +41,11 @@
 
         button{
           padding: 12px 24px;
-          background-color: #fece51;
+          background-color: #143AA2;
+          color: #fcf5f3;
           cursor: pointer;
           border: none;
+          border-radius: 5px;
         }
       }
 
@@ -60,11 +62,16 @@
 
         button{
           width: 100px;
-          background-color: teal;
+          background-color: #3E8DE3;
           color: white;
+          border: none;
           padding: 10px 20px;
           border-radius: 5px;
           cursor: pointer;
+
+          &:hover{
+            background-color: #236ab7;
+          }
         }
 
         img{
@@ -78,7 +85,7 @@
   }
   .chatContainer {
     flex: 2;
-    background-color: #fcf5f3;
+    background-color: #D3D4D7;
     height: 100%;
 
     @include md{
