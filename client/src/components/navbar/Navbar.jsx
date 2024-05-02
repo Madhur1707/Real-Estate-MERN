@@ -11,9 +11,9 @@ function Navbar() {
   return (
     <nav>
       <div className="left">
-        <a href="/" className="logo">
+        <a href="/" className="logo no-hover">
           <img src="/logoN.jpg" alt="" />
-          <span style={{color: "black"}}>RealEstate</span>
+          <span style={{ color: "#143AA2" }}>HomeSage</span>
         </a>
         <Link to="./list">
           {" "}

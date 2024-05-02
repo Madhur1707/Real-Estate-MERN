@@ -25,10 +25,25 @@ nav {
     a {
       color: #111;
       font-size: 18px;
+      font-weight: 600;
+    }
 
-      &:hover {
-        color: #3e8de3;
-      }
+    a::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: black;
+      transition: width 0.3s ease;
+    }
+
+    a:hover::after {
+      width: 100%;
+    }
+    .no-hover:hover::after {
+      width: 0;
     }
 
     .logo {
@@ -37,6 +52,7 @@ nav {
       display: flex;
       gap: 20px;
       align-items: center;
+      
 
       img {
         width: 50px;

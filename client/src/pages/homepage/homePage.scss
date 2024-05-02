@@ -15,6 +15,13 @@
       gap: 50px;
       height: 100%;
 
+      p {
+        font-size: 15px;
+        text-align: justify;
+        line-height: 1.4;
+        color: #656773;
+      }
+
       @include lg {
         padding: 0;
       }
@@ -24,12 +31,15 @@
       }
 
       .title {
-        font-size: 55px;
+        font-size: 25px;
+        color: #bdbec3;
+        margin-bottom: 20px;
 
         @include lg {
           font-size: 48px;
         }
       }
+
       .boxes {
         display: flex;
         justify-content: space-between;
@@ -61,8 +71,9 @@
       display: none;
     }
     img {
-      width: 125%;
-      height: 90%;
+      width: 130%;
+      height: 100%;
+      object-fit: contain;
       position: absolute;
       left: 0;
 

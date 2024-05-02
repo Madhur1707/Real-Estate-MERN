@@ -2,18 +2,30 @@ import Slider from "../../components/slider/Slider";
 import "./soloPage.scss";
 import { userData } from "../../lib/dummyData";
 import Map from "../../components/map/Map";
-import { useLoaderData } from "react-router-dom";
+import { redirect, useLoaderData } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { useContext, useState } from "react";
+import { AuthContext } from "./../../context/AuthContext";
+import apiRequest from "./../../lib/apiRequest";
 
 const SoloPage = () => {
   const post = useLoaderData();
 
+  const [saved, setSaved] = useState(post.isSaved);
+
+  const { currentUser } = useContext(AuthContext);
+
   const handleSave = async () => {
-    // try {
-    //   const res  = await
-    // } catch (err) {
-    //   console.log(err);
-    // }
+    setSaved((prev) => !prev);
+    if (!currentUser) {
+      redirect("/login");
+    }
+    try {
+      await apiRequest.post("/users/save", { postId: post.id });
+    } catch (err) {
+      console.log(err);
+      setSaved((prev) => !prev);
+    }
   };
 
   return (
@@ -81,7 +93,7 @@ const SoloPage = () => {
                 {post.postDetail.income === "2x" ? (
                   <p>Household income is Valid..</p>
                 ) : (
-                  <p> Must Have 2x the rent in total household Income</p>
+                  <p> Must Have 2x the rent in total household Income.</p>
                 )}
               </div>
             </div>
@@ -140,9 +152,12 @@ const SoloPage = () => {
               <img src="./chat.png" alt="" />
               Send a Message
             </button>
-            <button onClick={handleSave}>
+            <button
+              onClick={handleSave}
+              style={{ backgroundColor: saved ? "#d3d4d7" : "white" }}
+            >
               <img src="./save.png" alt="" />
-              Save This
+              {saved ? "Place saved" : "Save Place"}
             </button>
           </div>
         </div>
