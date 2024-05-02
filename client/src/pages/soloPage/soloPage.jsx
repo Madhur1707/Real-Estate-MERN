@@ -7,7 +7,14 @@ import DOMPurify from "dompurify";
 
 const SoloPage = () => {
   const post = useLoaderData();
-  console.log(post);
+
+  const handleSave = async () => {
+    // try {
+    //   const res  = await
+    // } catch (err) {
+    //   console.log(err);
+    // }
+  };
 
   return (
     <div className="singlePage">
@@ -87,7 +94,7 @@ const SoloPage = () => {
             </div>
             <div className="size">
               <img src="./bed.png" alt="" />
-              <span>2 Beds</span>
+              <span>2 Bedrooms</span>
             </div>
             <div className="size">
               <img src="./bath.png" alt="" />
@@ -133,9 +140,9 @@ const SoloPage = () => {
               <img src="./chat.png" alt="" />
               Send a Message
             </button>
-            <button>
+            <button onClick={handleSave}>
               <img src="./save.png" alt="" />
-              Save the Place
+              Save This
             </button>
           </div>
         </div>
