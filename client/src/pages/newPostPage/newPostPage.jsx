@@ -1,9 +1,9 @@
 import { useState } from "react";
 import "./newPostPage.scss";
-import ReacQuill from "react-quill";
 import apiRequest from "./../../lib/apiRequest";
 import UploadWidget from "./../../components/uploadWidget/UploadWidget";
 import { useNavigate } from "react-router-dom";
+
 
 const NewPostPage = () => {
   const [value, setValue] = useState("");
@@ -46,7 +46,7 @@ const NewPostPage = () => {
       });
       navigate("/" + res.data.id);
     } catch (err) {
-      console.log(err);
+      console.log(err);   
       setError(error);
     }
   };
@@ -71,7 +71,8 @@ const NewPostPage = () => {
             </div>
             <div className="item description">
               <label htmlFor="desc">Description</label>
-              <ReacQuill theme="snow" onChange={setValue} value={value} />
+              <textarea rows={5} cols={10} onChange={setValue} />
+              {/* <ReactQuill theme="snow" onChange={setValue} value={value} /> */}
             </div>
             <div className="item">
               <label htmlFor="city">City</label>

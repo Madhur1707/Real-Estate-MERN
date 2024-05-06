@@ -52,7 +52,7 @@ const Register = () => {
         </form>
       </div>
       <div className="imgContainer">
-        <img src="./rbg.jpg" alt="" />
+        <img src="./rbbg.jpg" alt="" />
       </div>
     </div>
   );
