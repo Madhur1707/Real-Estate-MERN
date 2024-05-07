@@ -1,11 +1,10 @@
-
 @import "../../responsive.scss";
 
 .profilePage {
   display: flex;
   height: 100%;
 
-  @include md{
+  @include md {
     flex-direction: column;
     overflow: scroll;
   }
@@ -15,33 +14,33 @@
     overflow-y: scroll;
     padding-bottom: 50px;
 
-    &::-webkit-scrollbar{
+    &::-webkit-scrollbar {
       display: none;
     }
 
-    @include md{
-      flex:none;
+    @include md {
+      flex: none;
       height: max-content;
     }
 
-    .wrapper{
+    .wrapper {
       padding-right: 50px;
       display: flex;
       flex-direction: column;
       gap: 50px;
 
-      .title{
+      .title {
         display: flex;
         align-items: center;
         justify-content: space-between;
 
-        h1{
+        h1 {
           font-weight: 300;
         }
 
-        button{
+        button {
           padding: 12px 24px;
-          background-color: #143AA2;
+          background-color: #143aa2;
           color: #fcf5f3;
           cursor: pointer;
           border: none;
@@ -49,32 +48,32 @@
         }
       }
 
-      .info{
+      .info {
         display: flex;
         flex-direction: column;
         gap: 20px;
 
-        span{
+        span {
           display: flex;
           align-items: center;
           gap: 20px;
         }
 
-        button{
+        button {
           width: 100px;
-          background-color: #3E8DE3;
+          background-color: #3e8de3;
           color: white;
           border: none;
           padding: 10px 20px;
           border-radius: 5px;
           cursor: pointer;
 
-          &:hover{
+          &:hover {
             background-color: #236ab7;
           }
         }
 
-        img{
+        img {
           width: 40px;
           height: 40px;
           border-radius: 50%;
@@ -85,15 +84,14 @@
   }
   .chatContainer {
     flex: 2;
-    background-color: #D3D4D7;
     height: 100%;
 
-    @include md{
-      flex:none;
+    @include md {
+      flex: none;
       height: max-content;
     }
 
-    .wrapper{
+    .wrapper {
       padding: 0px 20px;
       height: 100%;
     }

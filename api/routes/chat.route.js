@@ -1,8 +1,7 @@
 import express from "express";
 
 import { verifyToken } from "./../middleware/verifyToken.js";
-import {} from "../controllers/user.controller.js";
-import { addChat, getChat, getChats, readChat } from "../controllers/chat.controllers .js";
+import { addChat, getChat, getChats, readChat } from "../controllers/chat.controllers.js";
 
 const router = express.Router();
 
