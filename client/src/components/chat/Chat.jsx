@@ -3,20 +3,36 @@ import { useContext, useState } from "react";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
+import { format } from "timeago.js";
 
 const Chat = ({ chats }) => {
-  const [chat, setchat] = useState(true);
+  const [chat, setchat] = useState(null);
   const { currentUser } = useContext(AuthContext);
 
-  const handleOpenChat = async (id) => {
+  const handleOpenChat = async (id, reciever) => {
     try {
       const res = await apiRequest("/chats/" + id);
-      setchat(res.data);
+      setchat({ ...res.data, reciever });
     } catch (err) {
       console.log(err);
     }
   };
   console.log(chats);
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const text = formData.get("text");
+
+    if (!text) return;
+    try {
+      const res = await apiRequest.post("/messages/" + chat.id, { text });
+      setchat((prev) => ({ ...prev, messages: [...prev.messages, res.data] }));
+      e.target.reset();
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
   return (
     <div className="chat">
@@ -33,7 +49,7 @@ const Chat = ({ chats }) => {
                   : "#143aa2d6",
               color: "white",
             }}
-            onClick={handleOpenChat}
+            onClick={() => handleOpenChat(c.id, c.reciever)}
           >
             <img src={c.reciever.avatar || "./noavatar.jpeg"} alt="" />
             <span>{c.reciever.username}</span>
@@ -45,54 +61,36 @@ const Chat = ({ chats }) => {
         <div className="chatBox">
           <div className="top">
             <div className="user">
-              <img
-                src="https://insertface.com/fb/1492/black-goku-wallpaper-face-1492179-yztb2-fb.jpg"
-                alt=""
-              />
-              Madhur Pathak
+              <img src={chat.reciever.avatar || "./noavatar.jpeg"} alt="" />
+              {chat.reciever.username}
             </div>
             <span className="close" onClick={() => setchat(null)}>
               X
             </span>
           </div>
           <div className="center">
-            <div className="chatMessage">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage own">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage own">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage own">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
-            <div className="chatMessage own">
-              <p>Lorem ipsum, dolor sit amet consectetur!</p>
-              <span>5 hour ago</span>
-            </div>
+            {chat.messages.map((message) => (
+              <div
+                className="chatMessage"
+                style={{
+                  alignSelf:
+                    message.userId === currentUser.id
+                      ? "flex-end"
+                      : "flex-start",
+                  textAlign:
+                    message.userId === currentUser.id ? "right" : "left",
+                }}
+                key={message.id}
+              >
+                <p>{message.text}</p>
+                <span>{format(message.createdAt)}</span>
+              </div>
+            ))}
           </div>
-          <div className="bottom">
-            <textarea></textarea>
+          <form onSubmit={handleSubmit} className="bottom">
+            <textarea name="text"></textarea>
             <button>Send</button>
-          </div>
+          </form>
         </div>
       )}
     </div>
