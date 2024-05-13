@@ -1,13 +1,15 @@
 /* eslint-disable react/prop-types */
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest";
 import { format } from "timeago.js";
+import { SocketContext } from "../../context/SocketContext";
 
 const Chat = ({ chats }) => {
   const [chat, setchat] = useState(null);
   const { currentUser } = useContext(AuthContext);
+  const { socket } = useContext(SocketContext);
 
   const handleOpenChat = async (id, reciever) => {
     try {
@@ -29,10 +31,33 @@ const Chat = ({ chats }) => {
       const res = await apiRequest.post("/messages/" + chat.id, { text });
       setchat((prev) => ({ ...prev, messages: [...prev.messages, res.data] }));
       e.target.reset();
+      socket.emit("sendMessage", {
+        recieverId: chat.reciever.Id,
+        data: res.data,
+      });
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    const read = async () => {
+      try {
+        await apiRequest.put("/chats/read/" + chat.id);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    if ((chat, socket)) {
+      socket.on("getMessage", (data) => {
+        if (chat.id === data.chatId) {
+          setchat((prev) => ({ ...prev, messages: [...prev.messages, data] }));
+          read();
+        }
+      });
+    }
+  }, [chat, socket]);
 
   return (
     <div className="chat">
@@ -45,9 +70,9 @@ const Chat = ({ chats }) => {
             style={{
               backgroundColor:
                 c.seenBy.includes(currentUser.id) || chat?.id === c.id
-                  ? "black"
+                  ? "lightgrey"
                   : "#143aa2d6",
-              color: "white",
+              color: "black",
             }}
             onClick={() => handleOpenChat(c.id, c.reciever)}
           >
